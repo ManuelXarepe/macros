@@ -12,12 +12,12 @@ void eventDisplay()
   fRun->SetOutputFile("test.root");
   
   FairEventManager *fMan= new FairEventManager();
-  FairMCTracks *Track =  new FairMCTracks ("Monte-Carlo Tracks");
-  FairMCPointDraw *LandPoints =   new FairMCPointDraw ("LandPoint",kOrange,  kFullSquare);
+  FairMCTracksDraw *Track =  new FairMCTracksDraw ("Monte-Carlo Tracks");
+//  FairMCPointDraw *LandPoints =   new FairMCPointDraw ("LandPoint",kOrange,  kFullSquare);
   
   fMan->AddTask(Track);
   
-  fMan->AddTask(LandPoints);
+//  fMan->AddTask(LandPoints);
   
   fMan->Init();
 }

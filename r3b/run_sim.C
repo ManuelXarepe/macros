@@ -14,7 +14,7 @@ void run_sim()
     TString generator = generator1;
     TString inputFile = "";
 
-    Int_t nEvents = 1000;
+    Int_t nEvents = 1;
     Bool_t storeTrajectories = kTRUE;
     Int_t randomSeed = 335566; // 0 for time-dependent random numbers
 
@@ -59,7 +59,7 @@ void run_sim()
 
     // GLAD
     run->AddModule(new R3BGladMagnet("glad_v17_flange.geo.root")); // GLAD should not be moved or rotated
-
+/*
     // PSP
     run->AddModule(new R3BPsp("psp_v13a.geo.root", {}, -221., -89., 94.1));
 
@@ -104,6 +104,14 @@ void run_sim()
 
     // NeuLAND
     // run->AddModule(new R3BNeuland("neuland_test.geo.root", { 0., 0., 1400. + 12 * 5. }));
+*/
+    
+    //RPC
+    run->AddModule(
+        new R3BRpc("tof_rpc_s522.geo.root",
+                    { -155.824045 + (2.7 * 10) * TMath::Cos(16.7 * TMath::DegToRad()), 0.523976, 761.870346 },
+                    { "", -90., +16.7, 90. }));
+
 
     // -----   Create R3B  magnetic field ----------------------------------------
     // NB: <D.B>
